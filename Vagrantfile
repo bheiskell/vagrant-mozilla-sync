@@ -9,6 +9,10 @@ Vagrant::Config.run do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise32"
   #config.vm.customize ["modifyvm", :id, "--memory", 768]
+
+  # Addresses virtualbox bug that results in a VM crash
+  # https://www.virtualbox.org/ticket/4870
+  # https://github.com/mitchellh/vagrant/issues/516
   config.vm.customize(["modifyvm", :id, "--nictype1", "Am79C973"])
 
   # The url from where the 'config.vm.box' box will be fetched if it
