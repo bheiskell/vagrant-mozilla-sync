@@ -4,3 +4,5 @@ Installation
 
 cd modules
 ./get_modules.sh
+
+Change fallback_node in provision/sync.conf from "http://sync.xdxa.org:8080/" to whatever your front-end URI will be.
