@@ -1,8 +1,15 @@
-This vagrant/puppet configuration will generate a Mozilla Sync VM which can be used with FireFox.
+= Vagrant Configuration for Mozilla Sync Server
 
-Installation
+This vagrant/puppet configuration will generate a Mozilla Sync VM which can be
+used with FireFox.
 
-cd modules
-./get_modules.sh
+Change all instances of "example.com" to match your DNS host of choice
+(./provision/sync.conf & ./manifests/base.pp). The configured hostname and port
+must match the URI you plan to provide to Firefox.
 
-Change fallback_node in provision/sync.conf from "http://sync.example.com:8080/" to whatever your front-end URI will be.
+== Installation
+
+    cd modules
+    ./get_modules.sh
+    cd ..
+    vagrant up
