@@ -3,7 +3,7 @@ Exec { path => '/usr/bin:/bin:/usr/sbin:/sbin' }
 package {['vim', 'screen', 'sqlite3', 'build-essential']: ensure => 'present' }
 
 file { '/etc/motd':
-  content => "Sync server for xdxa.org."
+  content => "Sync server for example.com."
 }
 
 class {'apache':
@@ -11,12 +11,12 @@ class {'apache':
 class {'apache::mod::wsgi':
 }
 
-apache::vhost { 'sync.xdxa.org':
+apache::vhost { 'sync.example.com':
     priority        => '10',
     vhost_name      => '*',
     port            => '80',
     docroot         => '/var/www',
-    serveradmin     => 'ben.heiskell@xdxa.org',
+    serveradmin     => 'admin@example.com',
     template        => 'sync.conf.erb',
 }
 
@@ -87,5 +87,5 @@ Exec['build-sync'] <- Mercurial::Clone['/var/www/sync']
 Exec['build-sync'] -> File['/var/www/sync/etc/sync.conf']
 Exec['build-sync'] -> File['/var/sqlite/sync.db']
 
-Apache::Vhost['sync.xdxa.org'] <- File['/var/www/sync/etc/sync.conf']
-Apache::Vhost['sync.xdxa.org'] <- File['/var/sqlite/sync.db']
+Apache::Vhost['sync.example.com'] <- File['/var/www/sync/etc/sync.conf']
+Apache::Vhost['sync.example.com'] <- File['/var/sqlite/sync.db']
