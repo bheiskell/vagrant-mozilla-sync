@@ -1,7 +1,7 @@
 = Vagrant Configuration for Mozilla Sync Server
 
 This vagrant/puppet configuration will generate a Mozilla Sync VM which can be
-used with FireFox.
+used with Firefox.
 
 Change all instances of "example.com" to match your DNS host of choice
 (./provision/sync.conf & ./manifests/base.pp). The configured hostname and port
